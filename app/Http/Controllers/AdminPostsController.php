@@ -191,7 +191,7 @@ class AdminPostsController extends Controller
         if (Auth::check() && Auth::user()->isAdmin()) {
             $post = Post::find($id);
             if ($post) {
-                unlink(public_path() . explode("http://sql308.epizy.com", $post->photo->file)[1]);
+                unlink("http://course-peoject.herokuapp.com/images/" . $post->photo->file);
 
                 $post->delete();
 
@@ -201,7 +201,7 @@ class AdminPostsController extends Controller
         } else     if (Auth::check()) {
             $post = Post::find($id)->where('user_id', Auth::user()->id)->first();
             if ($post) {
-                unlink(public_path() . explode("http://sql308.epizy.com", $post->photo->file)[1]);
+                unlink("http://course-peoject.herokuapp.com/images/" . $post->photo->file);
 
                 $post->delete();
 

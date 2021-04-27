@@ -243,7 +243,7 @@ class AdminUsersController extends Controller
         $user = user::find($id);
 
         if ($user->photo)
-            unlink(public_path() . explode("http://127.0.0.1:8000", $user->photo->file)[1]);
+            unlink("http://course-peoject.herokuapp.com/images/" . $user->photo->file);
 
 
 
@@ -263,7 +263,7 @@ class AdminUsersController extends Controller
             $user = User::findOrFail($id);
 
             if ($user->photo)
-                unlink(public_path() . explode('http://sql308.epizy.com', $user->photo->file)[1]);
+                unlink("http://course-peoject.herokuapp.com/images/" . $user->photo->file);
 
 
             $user->delete();
