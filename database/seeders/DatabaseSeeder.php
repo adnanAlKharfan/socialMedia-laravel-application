@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)
             ->has(\App\Models\Post::factory()->count(1))
             ->create();*/
-        Db::insert("set FOREIGN_KEY_checks=0");
+
         DB::table('users')->truncate();
         DB::table('posts')->truncate();
         DB::table('roles')->truncate();
@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
         DB::insert('insert into roles ( name) values (?)', ['subscriper']);
         DB::insert('insert into categories ( name) values (?)', ['php']);
         DB::insert('insert into categories ( name) values (?)', ['java']);
+        DB::insert('insert into users ( password,email,role_id,name,created_at) values (?,?,?,?,?)', ['test123', 'adnan@adnan.com', 1, 'adnan', date("Y-m-d h:i:sa")]);
     }
 }
