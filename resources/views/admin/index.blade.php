@@ -6,7 +6,7 @@
 @section('content')
 
 
-    <h1>Admin</h1>
+    <h1> welcome back {{ $name }}</h1>
 
 
 

@@ -52,19 +52,22 @@ Route::middleware('auth')->group(function () {
 
 Auth::routes();
 
+
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{id}/post', 'HomeController@show')->name('show');
 Route::get('/category/{id}', 'HomeController@index_cat')->name('category');
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/admin', function () {
+        $user = Auth::user();
+        $userName = $user->name;
 
-        return view('admin.index');
+        return view('admin.index', ['name' => $userName]);
     })->name('admin');
     Route::post('/{id}/post', 'PostCommentsController@store2')->name('store_comment');
     Route::delete('/delete/user/{id}', 'AdminUsersController@delete_logout');

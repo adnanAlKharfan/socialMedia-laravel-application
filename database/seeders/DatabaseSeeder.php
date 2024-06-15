@@ -24,16 +24,16 @@ class DatabaseSeeder extends Seeder
             ->has(\App\Models\Post::factory()->count(1))
             ->create();*/
 
-        DB::table('users')->truncate();
-        DB::table('posts')->truncate();
-        DB::table('roles')->truncate();
-        DB::table('photos')->truncate();
-        DB::table('comments')->truncate();
-        DB::table('categories')->truncate();
+        // DB::table('users')->truncate();
+        // DB::table('posts')->truncate();
+        // DB::table('roles')->truncate();
+        // DB::table('photos')->truncate();
+        // DB::table('comments')->truncate();
+        // DB::table('categories')->truncate();
         DB::insert('insert into roles ( name) values (?)', ['administrator']);
-        DB::insert('insert into roles ( name) values (?)', ['subscriper']);
+        DB::insert('insert into roles ( name) values (?)', ['subscriber']);
         DB::insert('insert into categories ( name) values (?)', ['php']);
         DB::insert('insert into categories ( name) values (?)', ['java']);
-        DB::insert('insert into users ( password,email,role_id,name,created_at,updated_at) values (?,?,?,?,?,?)', [password_hash("test123", PASSWORD_BCRYPT, ["cost" => 4]), 'adnan@adnan.com', 1, 'adnan', date("Y-m-d h:i:sa"), date("Y-m-d h:i:sa")]);
+        DB::insert('insert into users ( password,email,role_id,name,created_at,updated_at) values (?,?,?,?,?,?)', [password_hash("test123", PASSWORD_BCRYPT, ["cost" => 4]), 'adnan@adnan.com', 1, 'adnan', date("Y-m-d h:i:s"), date("Y-m-d h:i:s")]);
     }
 }
