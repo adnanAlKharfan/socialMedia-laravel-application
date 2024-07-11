@@ -20,18 +20,20 @@ Our social media application allows users to post and comment on other user post
 
 - Allowing admin to create new categories and edit existing ones
 
+- Pagination
+
 
 ## Database
 
-Our database consists of 5 tables: users, posts, roles, categories and comments.
+Our database consists of 6 tables: users, posts, roles, photos, categories and comments.
 
 ### Entity-Relationship Diagram (ERD)
 
-users
+1. users
 
 - id: Primary Key (PK)
 - role_id: Foreign Key (FK) reference to roles table
-- photo_id: Nullable
+- photo_id:  Foreign Key (FK) reference to photos table
 - name
 - email: Unique
 - password
@@ -39,33 +41,33 @@ users
 - created_at
 - updated_at
 
-posts
+2. posts
 
 - id: Primary Key (PK)
 - user_id: Foreign Key (FK) reference to users table
 - category_id: Foreign Key (FK) reference to categories table
-- photo_id
+- photo_id:  Foreign Key (FK) reference to photos table
 - title
 - slug: Nullable
 - body
 - created_at
 - updated_at
 
-roles
+3. roles
 
 - id: Primary Key (PK)
 - name: Unique
 - created_at
 - updated_at
 
-categories
+4. categories
 
 - id: Primary Key (PK)
 - name
 - created_at
 - updated_at
 
-comments
+5. comments
 
 - id: Primary Key (PK)
 - post_id: Foreign Key (FK) reference to posts table
@@ -76,9 +78,18 @@ comments
 - created_at
 - updated_at
 
+6. photos
+
+- id: Primary Key (PK)
+- file
+- created_at
+- updated_at
+
 
 In this schema:
 
+- Each user can have an associated photo.
+- Each post can have an associated photo.
 - Each user can have multiple posts.
 - Each post belongs to a user and a category.
 - Each comment is associated with a specific post.
