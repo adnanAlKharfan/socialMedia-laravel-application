@@ -25,64 +25,56 @@ Our social media application allows users to post and comment on other user post
 
 Our database consists of 5 tables: users, posts, roles, categories and comments.
 
-+--------------+
-|    users     |
-+--------------+
-| id           | (PK)
-| role_id      |
-| photo_id     |
-| name         |
-| email        |
-| password     |
-| rememberToken|
-| created_at   |
-| updated_at   |
-+--------------+
+### Entity-Relationship Diagram (ERD)
 
-+--------------+
-|    posts     |
-+--------------+
-| id           | (PK)
-| user_id      | (FK -> users.id)
-| category_id  | (FK -> categories.id)
-| photo_id     |
-| title        |
-| slug         |
-| body         |
-| created_at   |
-| updated_at   |
-+--------------+
+users
 
-+--------------+
-|    roles     |
-+--------------+
-| id           | (PK)
-| name         |
-| created_at   |
-| updated_at   |
-+--------------+
+- id: Primary Key (PK)
+- role_id: Foreign Key (FK) reference to roles table
+- photo_id: Nullable
+- name
+- email: Unique
+- password
+- rememberToken
+- created_at
+- updated_at
 
-+--------------+
-| categories   |
-+--------------+
-| id           | (PK)
-| name         |
-| created_at   |
-| updated_at   |
-+--------------+
+posts
 
-+--------------+
-|  comments    |
-+--------------+
-| id           | (PK)
-| post_id      | (FK -> posts.id)
-| author       |
-| photo        |
-| email        |
-| body         |
-| created_at   |
-| updated_at   |
-+--------------+
+- id: Primary Key (PK)
+- user_id: Foreign Key (FK) reference to users table
+- category_id: Foreign Key (FK) reference to categories table
+- photo_id
+- title
+- slug: Nullable
+- body
+- created_at
+- updated_at
+
+roles
+
+- id: Primary Key (PK)
+- name: Unique
+- created_at
+- updated_at
+
+categories
+
+- id: Primary Key (PK)
+- name
+- created_at
+- updated_at
+
+comments
+
+- id: Primary Key (PK)
+- post_id: Foreign Key (FK) reference to posts table
+- author
+- photo
+- email
+- body
+- created_at
+- updated_at
 
 
 In this schema:
